@@ -29,9 +29,9 @@ public class GatewayConfig {
 
                 // Asistencia
                 .route("asistencia", r -> r.path(
-                        "/api/v1/asistencias/**",
-                        "/api/v1/anotaciones/**",
-                        "/api/v1/justificaciones/**")
+                        "/api/asistencias/**",
+                        "/api/anotaciones/**",
+                        "/api/justificaciones/**")
                         .uri("https://api-asistencia-node.onrender.com"))
 
                 // Comunicaci0n
