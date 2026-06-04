@@ -11,14 +11,42 @@ public class GatewayConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-            .route("usuarios", r -> r.path("/api/v1/usuarios/**")
-                .uri("https://api-usuarios-nrht.onrender.com"))
-            .route("academica", r -> r.path("/api/v1/academica/**")
-                .uri("https://api-academica-w9eo.onrender.com"))
-            .route("comunicacion", r -> r.path("/api/v1/comunicacion/**")
-                .uri("https://api-comunicacion.onrender.com"))
-            .route("asistencia", r -> r.path("/api/v1/asistencia/**")
-                .uri("https://api-asistencia-node.onrender.com"))
-            .build();
+
+                // Usuarios
+                .route("usuarios", r -> r.path("/api/v1/usuarios/**")
+                        .uri("https://api-usuarios-nrht.onrender.com"))
+
+                .route("perfiles", r -> r.path("/api/v1/perfiles/**")
+                        .uri("https://api-usuarios-nrht.onrender.com"))
+
+                // Academica
+                .route("academica", r -> r.path(
+                        "/api/cursos/**",
+                        "/api/asignaturas/**",
+                        "/api/evaluaciones/**",
+                        "/api/notas/**")
+                        .uri("https://api-academica-w9eo.onrender.com"))
+
+                // Asistencia
+                .route("asistencia", r -> r.path(
+                        "/api/v1/asistencias/**",
+                        "/api/v1/anotaciones/**",
+                        "/api/v1/justificaciones/**")
+                        .uri("https://api-asistencia-node.onrender.com"))
+
+                // Comunicaci0n
+                .route("comunicacion", r -> r.path(
+                        "/api/mensajes/**",
+                        "/api/conversaciones/**",
+                        "/api/notificaciones/**",
+                        "/api/grupos/**",
+                        "/api/adjuntos/**",
+                        "/api/plantillas/**",
+                        "/api/mensajes-grupales/**",
+                        "/api/configuracion-notificaciones/**",
+                        "/api/comunicacion/**")
+                        .uri("https://api-comunicacion.onrender.com"))
+
+                .build();
     }
 }
