@@ -28,7 +28,6 @@ public class CorsConfig {
                 response.setHeader("Access-Control-Allow-Credentials", "true");
                 response.setHeader("Access-Control-Max-Age", "3600");
 
-
                 if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
                     response.setStatus(HttpServletResponse.SC_OK);
                     return;
