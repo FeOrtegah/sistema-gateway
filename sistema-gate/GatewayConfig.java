@@ -12,16 +12,12 @@ public class GatewayConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
             .route("usuarios", r -> r.path("/api/v1/usuarios/**")
-                .filters(f -> f.stripPrefix(2)) // quita "/api/v1"
-                .uri("https://api-usuarios.onrender.com"))
+                .uri("https://api-usuarios-nrht.onrender.com"))
             .route("academica", r -> r.path("/api/v1/academica/**")
-                .filters(f -> f.stripPrefix(2))
-                .uri("https://api-academica.onrender.com"))
+                .uri("https://api-academica-w9eo.onrender.com"))
             .route("comunicacion", r -> r.path("/api/v1/comunicacion/**")
-                .filters(f -> f.stripPrefix(2))
                 .uri("https://api-comunicacion.onrender.com"))
             .route("asistencia", r -> r.path("/api/v1/asistencia/**")
-                .filters(f -> f.stripPrefix(2))
                 .uri("https://api-asistencia-node.onrender.com"))
             .build();
     }
