@@ -21,13 +21,7 @@
     </properties>
 
     <dependencies>
-        <!-- Starter básico de Spring Boot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!-- Spring Cloud Gateway -->
+        <!-- Spring Cloud Gateway (reactivo) -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
