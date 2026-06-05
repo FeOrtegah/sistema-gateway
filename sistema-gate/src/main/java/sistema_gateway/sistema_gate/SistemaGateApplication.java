@@ -12,7 +12,7 @@ import java.util.Arrays;
 @SpringBootApplication
 public class SistemaGateApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SistemaGateApplication.run(SistemaGateApplication.class, args);
+        SpringApplication.run(SistemaGateApplication.class, args);
     }
 }
 
