@@ -14,7 +14,14 @@ public class CorsConfig {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOriginPatterns(List.of("https://react-frontend-senb.onrender.com"));
+        
+        config.setAllowedOriginPatterns(List.of(
+            "http://localhost:5173",
+            "http://localhost:5174",
+            "http://localhost:5175",
+            "https://react-frontend-senb.onrender.com"
+        ));
+        
         config.setAllowCredentials(true);
         config.addAllowedMethod("*");
         config.addAllowedHeader("*");
