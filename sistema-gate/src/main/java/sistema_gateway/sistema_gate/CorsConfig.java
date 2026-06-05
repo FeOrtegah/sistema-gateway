@@ -19,7 +19,8 @@ public class CorsConfig {
             "http://localhost:5173",
             "http://localhost:5174",
             "http://localhost:5175",
-            "https://react-frontend-senb.onrender.com"
+            "https://react-frontend-senb.onrender.com",
+            "https://kpr9qgxl-5174.brs.devtunnels.ms" 
         ));
         
         config.setAllowCredentials(true);
