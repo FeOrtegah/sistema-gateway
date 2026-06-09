@@ -1,23 +1,33 @@
-spring.application.name=sistema-gate
-server.port=${PORT:8080}
-spring.main.web-application-type=reactive
-logging.level.org.springframework.cloud.gateway=DEBUG
-logging.level.org.springframework.web.client=DEBUG
+package sistema_gateway.sistema_gate;
 
-spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsWebFilter;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import java.util.List;
 
-spring.cloud.gateway.mvc.routes[0].id=api-usuarios
-spring.cloud.gateway.mvc.routes[0].uri=https://api-usuarios-nrht.onrender.com
-spring.cloud.gateway.mvc.routes[0].predicates[0]=Path=/api/v1/usuarios/**
+@Configuration
+public class CorsConfig {
 
-spring.cloud.gateway.mvc.routes[1].id=api-academica
-spring.cloud.gateway.mvc.routes[1].uri=https://api-academica-w9eo.onrender.com
-spring.cloud.gateway.mvc.routes[1].predicates[0]=Path=/api/cursos/**,/api/asignaturas/**,/api/evaluaciones/**,/api/notas/**
+    @Bean
+    public CorsWebFilter corsWebFilter() {
+        CorsConfiguration config = new CorsConfiguration();
 
-spring.cloud.gateway.mvc.routes[2].id=api-asistencia
-spring.cloud.gateway.mvc.routes[2].uri=https://api-asistencia-bo6s.onrender.com
-spring.cloud.gateway.mvc.routes[2].predicates[0]=Path=/api/v1/asistencias/**
+        config.setAllowedOriginPatterns(List.of(
+            "http://localhost:5173",
+            "http://localhost:5174",
+            "http://localhost:5175",
+            "https://react-frontend-senb.onrender.com",
+            "https://kpr9qgxl-5174.brs.devtunnels.ms"
+        ));
 
-spring.cloud.gateway.mvc.routes[3].id=api-comunicacion
-spring.cloud.gateway.mvc.routes[3].uri=https://api-comunicacion.onrender.com
-spring.cloud.gateway.mvc.routes[3].predicates[0]=Path=/api/mensajes/**,/api/conversaciones/**,/api/notificaciones/**,/api/grupos/**,/api/adjuntos/**,/api/plantillas/**,/api/mensajes-grupales/**,/api/comunicacion/**
+        config.setAllowCredentials(true);
+        config.addAllowedMethod("*");
+        config.addAllowedHeader("*");
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return new CorsWebFilter(source);
+    }
+}
