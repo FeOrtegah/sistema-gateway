@@ -24,7 +24,8 @@ public class GatewayConfig {
                         "/api/cursos/**",
                         "/api/asignaturas/**",
                         "/api/evaluaciones/**",
-                        "/api/notas/**")
+                        "/api/notas/**",
+                        "/api/matriculas/**")
                         .uri("https://api-academica-w9eo.onrender.com"))
 
                 // Asistencia
